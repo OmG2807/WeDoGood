@@ -240,31 +240,47 @@ JSON-formatted logs with:
 - Log level (ERROR, WARN, INFO, DEBUG)
 - Request metadata (method, path, duration)
 
+## 🌐 Live Demo
+
+| Service | URL |
+|---------|-----|
+| **Frontend** | [https://wedogood-frontend.onrender.com](https://wedogood-frontend.onrender.com) |
+| **Backend API** | [https://wedogood-backend.onrender.com](https://wedogood-backend.onrender.com) |
+| **API Health** | [https://wedogood-backend.onrender.com/health](https://wedogood-backend.onrender.com/health) |
+| **GitHub Repo** | [https://github.com/OmG2807/WeDoGood](https://github.com/OmG2807/WeDoGood) |
+
+> ⚠️ **Note**: Free tier services on Render spin down after 15 mins of inactivity. First request may take 30-60 seconds to wake up.
+
+## 📱 Screenshots
+
+### Report Submission Form
+Submit individual monthly NGO impact reports with validation.
+
+### Bulk CSV Upload
+Upload multiple reports via CSV with real-time progress tracking.
+
+### Admin Dashboard
+View aggregated statistics with interactive charts and filters.
+
 ## 📝 Deployment
 
-### Vercel (Frontend)
-```bash
-cd frontend
-vercel
-```
+### Render (Current Setup)
 
-### Render (Backend)
-1. Create new Web Service
-2. Connect GitHub repo
+**Backend (Web Service):**
+1. Create new Web Service on Render
+2. Connect GitHub repo: `OmG2807/WeDoGood`
 3. Set root directory: `backend`
 4. Build command: `npm install`
 5. Start command: `npm start`
+6. Add env vars: `NODE_ENV=production`, `ADMIN_API_KEY=your-key`
 
-### Railway
-```bash
-# Install Railway CLI
-npm install -g @railway/cli
-
-# Deploy
-railway login
-railway init
-railway up
-```
+**Frontend (Static Site):**
+1. Create new Static Site on Render
+2. Connect GitHub repo: `OmG2807/WeDoGood`
+3. Set root directory: `frontend`
+4. Build command: `npm install && npm run build`
+5. Publish directory: `out`
+6. Add env var: `NEXT_PUBLIC_API_URL=https://your-backend.onrender.com`
 
 ## 🤖 AI Tools Used
 
@@ -294,4 +310,4 @@ MIT License - feel free to use this project as reference.
 
 ---
 
-Built with ❤️ for NGOs making a difference | [Demo](#) | [API Docs](http://localhost:5000/api-docs)
+Built with ❤️ for NGOs making a difference | [Live Demo](https://wedogood-frontend.onrender.com) | [API Docs](https://wedogood-backend.onrender.com/api-docs)
