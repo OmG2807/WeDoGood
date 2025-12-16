@@ -1,0 +1,151 @@
+{
+  "info": {
+    "name": "NGO Impact Tracker API",
+    "description": "API collection for NGO Impact Tracker",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health"
+      }
+    },
+    {
+      "name": "Submit Report",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/report",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ngo_id\": \"NGO-001\",\n  \"month\": \"2024-03\",\n  \"people_helped\": 150,\n  \"events_conducted\": 5,\n  \"funds_utilized\": 50000\n}"
+        }
+      }
+    },
+    {
+      "name": "Upload CSV",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/reports/upload",
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Job Status",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/job-status/{{job_id}}"
+      }
+    },
+    {
+      "name": "Get All Jobs",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/job-status"
+      }
+    },
+    {
+      "name": "Get Dashboard Data",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/dashboard?month=2024-03",
+          "host": ["{{baseUrl}}"],
+          "path": ["dashboard"],
+          "query": [
+            {
+              "key": "month",
+              "value": "2024-03"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Available Months",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/dashboard/months"
+      }
+    },
+    {
+      "name": "Get Trends",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/dashboard/trends?limit=12",
+          "host": ["{{baseUrl}}"],
+          "path": ["dashboard", "trends"],
+          "query": [
+            {
+              "key": "limit",
+              "value": "12"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Paginated Reports",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/dashboard/reports?page=1&limit=20&month=2024-03",
+          "host": ["{{baseUrl}}"],
+          "path": ["dashboard", "reports"],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "20"
+            },
+            {
+              "key": "month",
+              "value": "2024-03"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All NGOs",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/dashboard/ngos"
+      }
+    },
+    {
+      "name": "API Docs",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api-docs"
+      }
+    }
+  ]
+}
+

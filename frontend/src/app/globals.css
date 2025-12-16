@@ -1,0 +1,251 @@
+@import "tailwindcss";
+
+:root {
+  /* Warm terracotta and sage color palette - inspired by grassroots movements */
+  --color-bg-primary: #faf8f5;
+  --color-bg-secondary: #f5f0e8;
+  --color-bg-accent: #e8e0d5;
+  --color-text-primary: #2d3436;
+  --color-text-secondary: #636e72;
+  --color-text-muted: #a0a8ab;
+  --color-accent-primary: #c44536;
+  --color-accent-secondary: #772e25;
+  --color-accent-tertiary: #283618;
+  --color-sage: #606c38;
+  --color-sage-light: #8b9a6d;
+  --color-cream: #fefae0;
+  --color-sand: #dda15e;
+  --color-terracotta: #bc6c25;
+  --color-success: #4a7c59;
+  --color-warning: #e9c46a;
+  --color-error: #c44536;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDXbtY.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/dmsans/v15/rP2Hp2ywxg089UriCZOIHTWEBlw.woff2') format('woff2');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-sage-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-sage);
+}
+
+/* Animated background pattern */
+.bg-pattern {
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(96, 108, 56, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(188, 108, 37, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(196, 69, 54, 0.04) 0%, transparent 50%);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(45, 52, 54, 0.1);
+}
+
+/* Button animations */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-accent-tertiary) 100%);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(96, 108, 56, 0.3);
+}
+
+/* Input focus states */
+.input-field {
+  transition: all 0.3s ease;
+  border: 2px solid var(--color-bg-accent);
+}
+
+.input-field:focus {
+  border-color: var(--color-sage);
+  box-shadow: 0 0 0 4px rgba(96, 108, 56, 0.1);
+  outline: none;
+}
+
+/* Stat card gradient borders */
+.stat-card {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.stat-card.green::before {
+  background: linear-gradient(90deg, var(--color-sage) 0%, var(--color-sage-light) 100%);
+}
+
+.stat-card.orange::before {
+  background: linear-gradient(90deg, var(--color-terracotta) 0%, var(--color-sand) 100%);
+}
+
+.stat-card.red::before {
+  background: linear-gradient(90deg, var(--color-accent-primary) 0%, var(--color-accent-secondary) 100%);
+}
+
+.stat-card.cream::before {
+  background: linear-gradient(90deg, var(--color-sand) 0%, var(--color-cream) 100%);
+}
+
+/* Progress bar animation */
+@keyframes progress-shine {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.progress-bar-animated {
+  background: linear-gradient(
+    90deg,
+    var(--color-sage) 0%,
+    var(--color-sage-light) 50%,
+    var(--color-sage) 100%
+  );
+  background-size: 200% 100%;
+  animation: progress-shine 2s ease-in-out infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.3s; }
+.animate-delay-4 { animation-delay: 0.4s; }
+
+/* File upload zone */
+.upload-zone {
+  border: 2px dashed var(--color-bg-accent);
+  transition: all 0.3s ease;
+}
+
+.upload-zone:hover,
+.upload-zone.active {
+  border-color: var(--color-sage);
+  background: rgba(96, 108, 56, 0.05);
+}
+
+/* Navigation link underline effect */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-sage);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Toast notification */
+.toast {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
