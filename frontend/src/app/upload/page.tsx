@@ -74,8 +74,8 @@ export default function BulkUploadPage() {
     try {
       const response = await uploadCSV(file);
       
-      if (response.success && response.job_id) {
-        setCurrentJobId(response.job_id);
+      if (response.success && response.data?.job_id) {
+        setCurrentJobId(response.data.job_id);
         setFile(null);
       } else {
         setError(response.error || "Failed to upload file");
